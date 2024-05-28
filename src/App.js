@@ -1,24 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { TimeProvider } from './context/TimeContext';
+import { Container, Grid } from '@mui/material';
+import ActivityForm from './components/ActivityForm';
+import ActivityList from './components/ActivityList';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <TimeProvider>
+      <Container>
+        <Grid container spacing={3}>
+          <Grid item xs={12}>
+            <ActivityForm />
+          </Grid>
+          <Grid item xs={12}>
+            <ActivityList />
+          </Grid>
+        </Grid>
+      </Container>
+    </TimeProvider>
   );
 }
 
