@@ -23,19 +23,32 @@ const ActivityForm = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <h1>Agregar Actividad</h1>
+      <TextField {...register('title')} label="Titulo" variant="outlined" fullWidth margin="normal" />
       <TextField {...register('description')} label="Descripción" variant="outlined" fullWidth margin="normal" />
       <FormControl fullWidth margin="normal">
         <InputLabel>Tipo</InputLabel>
-        <Select {...register('type')} defaultValue={"fun"}>
-          <MenuItem value="work" selected>work</MenuItem>
-          <MenuItem value="study">study</MenuItem>
-          <MenuItem value="exercise">exercise</MenuItem>
-          <MenuItem value="fun">fun</MenuItem>
-          <MenuItem value="rest">rest</MenuItem>
+        <Select {...register('type')} defaultValue={"work"}>
+          <MenuItem value="work" selected>Trabajo</MenuItem>
+          <MenuItem value="study">Estudio</MenuItem>
+          <MenuItem value="exercise">Ejercicio</MenuItem>
+          <MenuItem value="fun">Diversion</MenuItem>
+          <MenuItem value="rest">Descanso</MenuItem>
+          <MenuItem value="transportation">Transporte</MenuItem>
+          <MenuItem value="cleaning">Aseo</MenuItem>
+        </Select>
+      </FormControl>
+      <FormControl fullWidth margin="normal">
+        <InputLabel>Duración</InputLabel>
+        <Select {...register('duration')} defaultValue={2}>
+          <MenuItem value={0.5}> 30 minutos</MenuItem>
+          <MenuItem value={1}>1 hora</MenuItem>
+          <MenuItem value={2} selected>2 horas</MenuItem>
+          <MenuItem value={3}> 3 horas </MenuItem>
+          <MenuItem value={6}> 6 horas </MenuItem>
         </Select>
       </FormControl>
 
-      <FormControl fullWidth margin="normal">
+      <FormControl fullWidth margin="normal" sx={{mb:5}}>
         <InputLabel>Esfuerzo</InputLabel>
         <EffortRating
           name="effort"
@@ -45,7 +58,7 @@ const ActivityForm = () => {
           }}
         />
       </FormControl>
-
+      <br/>
       <Button type="submit" variant="contained" color="primary">Agregar Actividades</Button>
     </form>
   );
